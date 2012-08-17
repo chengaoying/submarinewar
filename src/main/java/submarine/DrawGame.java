@@ -947,10 +947,10 @@ public class DrawGame implements Common{
 					ownRank = String.valueOf(gameRanking[i].getRanking());
 				}
 				initMedalNum(medalNum);
-				TextView.showSingleLineText(g, String.valueOf(ranking), 35, 122+(i*35), 100, 35, 1);
-				TextView.showSingleLineText(g, str, 135, 122+(i*35), 125, 35, 1);
-				TextView.showSingleLineText(g, scores, 260, 122+(i*35), 100, 35, 1);
-				TextView.showSingleLineText(g, hitNum, 360, 122+(i*35), 105, 35, 1);
+				TextView.showSingleLineText(g, String.valueOf(ranking), 35+Abs_Coords_X, 122+(i*35)+Abs_Coords_Y, 100, 35, 1);
+				TextView.showSingleLineText(g, str, 135+Abs_Coords_X, 122+(i*35)+Abs_Coords_Y, 125, 35, 1);
+				TextView.showSingleLineText(g, scores, 260+Abs_Coords_X, 122+(i*35)+Abs_Coords_Y, 100, 35, 1);
+				TextView.showSingleLineText(g, hitNum, 360+Abs_Coords_X, 122+(i*35)+Abs_Coords_Y, 105, 35, 1);
 				/*int idW = 104-g.getFont().stringWidth(id)/2;
 				int scoresW = 260-g.getFont().stringWidth(scores)/2;
 				int hitNumW = 390-g.getFont().stringWidth(hitNum)/2;
@@ -959,10 +959,10 @@ public class DrawGame implements Common{
 				g.drawString(scores, scoresW, y, TopLeft);
 				g.drawString(hitNum, hitNumW, y, TopLeft);*/
 				//画勋章
-				drawMedal(g, 480, 130+(i*35));
+				drawMedal(g, 480+Abs_Coords_X, 130+(i*35)+Abs_Coords_Y);
 			}
 		}
-		g.drawString(ownRank, 140, 498, TopLeft);
+		g.drawString(ownRank, 140+Abs_Coords_X, 498+Abs_Coords_Y, TopLeft);
 		engine.setDefaultFont();
 	}
 	/*分数相同时按勋章数量排序*/
