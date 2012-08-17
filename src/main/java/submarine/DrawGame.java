@@ -141,9 +141,9 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		g.drawRegion(imgMenu, 0, 0, 202, 192, 0, 150, 165, TopLeft);
+		g.drawRegion(imgMenu, 0, 0, 202, 192, 0, 150+Abs_Coords_X, 165+Abs_Coords_Y, TopLeft);
 		//g.drawRegion(imgSelect2, 0, 0, 160, 55, 0, 172, 176+index*56, TopLeft);
-		DrawUtil.drawRect(g, 172, 175+index*58, 158, 53, 2, 0XFFFF00);
+		DrawUtil.drawRect(g, 172+Abs_Coords_X, 175+index*58+Abs_Coords_Y, 158, 53, 2, 0XFFFF00);
 	}
 
 	/*没有游戏记录时提示*/
@@ -155,14 +155,14 @@ public class DrawGame implements Common{
 		int th = FontH + 20;
 		int tx = 258;//screenW / 2 - tw / 2;
 		int ty = screenH / 2 - th;
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 		g.setColor(26, 131, 238); 
-		g.fillRect(tx, ty, tw, th);// 画框
+		g.fillRect(tx+Abs_Coords_X, ty+Abs_Coords_Y, tw, th);// 画框
 		g.setColor(243, 191, 99); //框的颜色
-		g.drawRect(tx - 1, ty - 1, tw + 1, th + 1);// 画边
-		g.drawRect(tx - 2, ty - 2, tw + 3, th + 3);// 画边
+		g.drawRect(tx - 1+Abs_Coords_X, ty - 1+Abs_Coords_Y, tw + 1, th + 1);// 画边
+		g.drawRect(tx - 2+Abs_Coords_X, ty - 2+Abs_Coords_Y, tw + 3, th + 3);// 画边
 		g.setColor(0xffffff);
-		g.drawString("没有游戏记录", tx + 15, ty + 8, TopLeft);
+		g.drawString("没有游戏记录", tx + 15+Abs_Coords_X, ty + 8+Abs_Coords_Y, TopLeft);
 	}
 	
 /*	private String getKeyCodeStr(int keyCode) {
@@ -251,17 +251,17 @@ public class DrawGame implements Common{
 				g.drawRegion(imgMapCenter, mapIndex2, 0, 640-mapIndex2, 430, 0, Abs_Coords_X, 100+Abs_Coords_Y, TopLeft);
 				g.drawRegion(imgMapCenter, 0, 0, 480-(640-mapIndex2), 430, 0, 640-mapIndex2+Abs_Coords_X, 100+Abs_Coords_Y, TopLeft);
 			}
-			if((x1-iceIndex+221)<=0){
+			if((x1-iceIndex+221)<=0+Abs_Coords_X){
 				iceIndex=0;
 				x1=479;
 				ran = RandomValue.getRandInt(2);
 			}
-			if((x3-iceIndex2+273)<=0){
+			if((x3-iceIndex2+273)<=0+Abs_Coords_X){
 				iceIndex2=0;
 				x3=479;
 				ran2 = RandomValue.getRandInt(2);
 			}
-			if((x2-boatIndex+94)<=0){
+			if((x2-boatIndex+94)<=0+Abs_Coords_X){
 				boatIndex=0;
 				x2=479;
 			}
@@ -403,7 +403,7 @@ public class DrawGame implements Common{
 	
 	/*爆炸效果一*/
 	public void drawBurstEffect(Graphics g, int mapx, int mapy, int frame){
-		g.setClip(0, 0, gameMapX, gameMapY);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 		if (imgKa == null) {
 			try {
 				imgKa = Image.createImage("/ka.png");
@@ -414,12 +414,12 @@ public class DrawGame implements Common{
 		if((mapx+68)<480 && frame<13){
 			g.drawRegion(imgKa, frame*(imgKa.getWidth()/14), 0, imgKa.getWidth()/14, imgKa.getHeight(), 0, mapx, mapy, TopLeft);
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 	}
 	
 	/*爆炸效果二*/
 	public void drawBurstEffect2(Graphics g, int mapx, int mapy){
-		g.setClip(0, 0, gameMapX, gameMapY);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 		if (imgKa == null) {
 			try {
 				imgKa = Image.createImage("/ka.png");
@@ -439,7 +439,7 @@ public class DrawGame implements Common{
 				SubmarineGameEngine.bombFlag=false;
 			}
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 	}
 	
 	/*主舰艇信息*/
@@ -461,26 +461,26 @@ public class DrawGame implements Common{
 			}
 		}
 		if(currBoold>=10){
-			g.drawRegion(imgBlood, 0, 0, 10, 16, 0, 60, 500, TopLeft);
+			g.drawRegion(imgBlood, 0, 0, 10, 16, 0, 60+Abs_Coords_X, 500+Abs_Coords_Y, TopLeft);
 		}
 		if(currBoold>20){
-			g.drawRegion(imgBlood2, 0, 0, currBoold-20, 16, 0, 68, 500, TopLeft);
+			g.drawRegion(imgBlood2, 0, 0, currBoold-20, 16, 0, 68+Abs_Coords_X, 500+Abs_Coords_Y, TopLeft);
 		}
 		if(currBoold==90){
-			g.drawRegion(imgBlood, 20, 0, 10, 16, 0, 137, 500, TopLeft);
+			g.drawRegion(imgBlood, 20, 0, 10, 16, 0, 137+Abs_Coords_X, 500+Abs_Coords_Y, TopLeft);
 		}
 		engine.setFont(24);
 		g.setColor(255, 255, 255);
 		/*关卡*/
-		g.drawRegion(imgGk, 25*(level-1), 0, 25, 28, 0, 585, 13, TopLeft);
+		g.drawRegion(imgGk, 25*(level-1), 0, 25, 28, 0, 585+Abs_Coords_X, 13+Abs_Coords_Y, TopLeft);
 		/*当前血量*/
-		drawNum(g, own.nonceLife, 92, 498);
+		drawNum(g, own.nonceLife, 92+Abs_Coords_X, 498+Abs_Coords_Y);
 		//g.drawString(String.valueOf(own.nonceLife)+"/"+String.valueOf(limitLife), 85, 498, TopLeft);
 		/*得分和击落数量*/
-		drawNum(g, own.scores, 230, 498);
-		drawNum(g, own.eatCount2, 403, 498);
+		drawNum(g, own.scores, 230+Abs_Coords_X, 498+Abs_Coords_Y);
+		drawNum(g, own.eatCount2, 403+Abs_Coords_X, 498+Abs_Coords_Y);
 		for(int i=0;i<own.lifeNum;i++){
-			g.drawImage(imgLifeNums, i*imgLifeNums.getWidth(), 0, TopLeft);
+			g.drawImage(imgLifeNums, i*imgLifeNums.getWidth()+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		}
 		
 		/*道具数量*/
@@ -495,16 +495,16 @@ public class DrawGame implements Common{
 		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 498, 456, 18, 16, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 565, 456, 18, 16, 1);*/
 		
-		TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 494, 260, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 561, 260, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 494, 326, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.airDropPropNum), 561, 326, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.dartlePropNum), 494, 391, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.laserPropNum), 561, 391, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 494, 456, 24, 16, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 561, 456, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 494+Abs_Coords_X, 260+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 561+Abs_Coords_X, 260+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 494+Abs_Coords_X, 326+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.airDropPropNum), 561+Abs_Coords_X, 326+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.dartlePropNum), 494+Abs_Coords_X, 391+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.laserPropNum), 561+Abs_Coords_X, 391+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 494+Abs_Coords_X, 456+Abs_Coords_Y, 24, 16, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 561+Abs_Coords_X, 456+Abs_Coords_Y, 24, 16, 1);
 		/*画勋章*/
-		drawMedal(g, 500, 187);
+		drawMedal(g, 500+Abs_Coords_X, 187+Abs_Coords_Y);
 		/*提示信息*/
 		if(!msg.equals("") && msgTime2-msgTime<3){
 			int color = g.getColor();
@@ -512,8 +512,8 @@ public class DrawGame implements Common{
 			engine.setFont(19);
 			Font currFont = engine.getFont();//Font.getFont(Font.FACE_MONOSPACE, Font.STYLE_PLAIN, Font.SIZE_LARGE);
 			int x = 100+imgRules.getWidth()/2 - currFont.stringWidth(msg)/2;
-			g.drawImage(imgRules, 100, 195, TopLeft);
-			g.drawString(msg, x, 200, TopLeft);
+			g.drawImage(imgRules, 100+Abs_Coords_X, 195+Abs_Coords_Y, TopLeft);
+			g.drawString(msg, x+Abs_Coords_X, 200+Abs_Coords_Y, TopLeft);
 			g.setColor(color);
 		}
 		engine.setDefaultFont();
@@ -548,12 +548,12 @@ public class DrawGame implements Common{
 			}
 		}
 		try{
-			g.drawImage(imgMain4, 0, 0, TopLeft);
-			g.drawRegion(imgLevel, 0, 0, 51, 22, 0, 220, 165, TopLeft);    //1
-			g.drawRegion(imgLevel, 102, 0, 51, 22, 0, 377, 168, TopLeft);   //2
-			g.drawRegion(imgLevel, 51, 0, 51, 22, 0, 485, 265, TopLeft);   //3
-			g.drawRegion(imgLevel, 153, 0, 51, 22, 0, 267, 325, TopLeft);  //4
-			g.drawRegion(imgBiglevel, 0, 0, 84, 34, 0, 326, 230, TopLeft); //5
+			g.drawImage(imgMain4, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
+			g.drawRegion(imgLevel, 0, 0, 51, 22, 0, 220+Abs_Coords_X, 165+Abs_Coords_Y, TopLeft);    //1
+			g.drawRegion(imgLevel, 102, 0, 51, 22, 0, 377+Abs_Coords_X, 168+Abs_Coords_Y, TopLeft);   //2
+			g.drawRegion(imgLevel, 51, 0, 51, 22, 0, 485+Abs_Coords_X, 265+Abs_Coords_Y, TopLeft);   //3
+			g.drawRegion(imgLevel, 153, 0, 51, 22, 0, 267+Abs_Coords_X, 325+Abs_Coords_Y, TopLeft);  //4
+			g.drawRegion(imgBiglevel, 0, 0, 84, 34, 0, 326+Abs_Coords_X, 230+Abs_Coords_Y, TopLeft); //5
 			if(promptFlag<=3){
 				promptFlag++;
 			}else{
@@ -567,7 +567,7 @@ public class DrawGame implements Common{
 				promptFlag = 0;
 			}
 			/*当前关卡*/
-			g.drawRegion(imgPrompt, 0, 0, imgPrompt.getWidth(), imgPrompt.getHeight(), 0, para[level-1][0], promptIndex, TopLeft);
+			g.drawRegion(imgPrompt, 0, 0, imgPrompt.getWidth(), imgPrompt.getHeight(), 0, para[level-1][0]+Abs_Coords_X, promptIndex+Abs_Coords_Y, TopLeft);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -584,9 +584,9 @@ public class DrawGame implements Common{
 			}
 		}
 		if(index==0){
-			g.drawImage(imgHelp, 0, 0, TopLeft);
+			g.drawImage(imgHelp, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		}else{
-			g.drawImage(imgHelp2, 0, 0, TopLeft);
+			g.drawImage(imgHelp2, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		}
 	}
 	
@@ -611,27 +611,27 @@ public class DrawGame implements Common{
 			}
 		}
 		String str = "";
-		g.drawImage(imgMain3, 0, 0, TopLeft);
+		g.drawImage(imgMain3, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		if(passState==-1){
-			g.drawRegion(imgGameInfo, 0, 0, imgGameInfo.getWidth(), imgGameInfo.getHeight(), 0, 85, 140, TopLeft);
-			g.drawImage(imgOver, 266, 158, TopLeft);
-			g.drawRegion(imgPassSelect, index*193, 0, 193, 46, 0, 91, 420, TopLeft);
-			g.drawRegion(imgPassSelect, (index==0?1:0)*193, 92, 193, 46, 0, 350, 420, TopLeft);
+			g.drawRegion(imgGameInfo, 0, 0, imgGameInfo.getWidth(), imgGameInfo.getHeight(), 0, 85+Abs_Coords_X, 140+Abs_Coords_Y, TopLeft);
+			g.drawImage(imgOver, 266+Abs_Coords_X, 158+Abs_Coords_Y, TopLeft);
+			g.drawRegion(imgPassSelect, index*193, 0, 193, 46, 0, 91+Abs_Coords_X, 420+Abs_Coords_Y, TopLeft);
+			g.drawRegion(imgPassSelect, (index==0?1:0)*193, 92, 193, 46, 0, 350+Abs_Coords_X, 420+Abs_Coords_Y, TopLeft);
 			info(g, level, own, str);
 		}else{
 			if(passState==0){
-				g.drawRegion(imgGameInfo, 0, 0, imgGameInfo.getWidth(), imgGameInfo.getHeight(), 0, 85, 140, TopLeft);
-				g.drawImage(imgPass, 286, 158, TopLeft);
+				g.drawRegion(imgGameInfo, 0, 0, imgGameInfo.getWidth(), imgGameInfo.getHeight(), 0, 85+Abs_Coords_X, 140+Abs_Coords_Y, TopLeft);
+				g.drawImage(imgPass, 286+Abs_Coords_X, 158+Abs_Coords_Y, TopLeft);
 				str="按确认键进入下一关!";
 				info(g, level, own, str);
 			}else{
 				//str="按确认键进入排行榜查看排名!";
-				g.drawImage(imgPassBg, 175, tempY, TopLeft);
+				g.drawImage(imgPassBg, 175+Abs_Coords_X, tempY+Abs_Coords_Y, TopLeft);
 				if(tempY<=180){
 					tempY += 35;
 				}else{
-					g.drawRegion(imgPassText, 543*5, 0, 543, 175, 0, 50, 235, TopLeft);
-					g.drawRegion(imgPassText, textIndex*543, 0, 543, 175, 0, 50, 235, TopLeft);
+					g.drawRegion(imgPassText, 543*5, 0, 543, 175, 0, 50+Abs_Coords_X, 235+Abs_Coords_Y, TopLeft);
+					g.drawRegion(imgPassText, textIndex*543, 0, 543, 175, 0, 50+Abs_Coords_X, 235+Abs_Coords_Y, TopLeft);
 					if(textIndex<5){
 						if(textFlag<=3){
 							textFlag++;
@@ -670,7 +670,7 @@ public class DrawGame implements Common{
 									mapy2 = coordinate[1][RandomValue.getRandInt(0, 4)];
 								}
 							}
-							g.drawRegion(imgPassFireWork, fireIndex2*341, 0, 341, 354, 0, mapx2, mapy2, TopLeft);
+							g.drawRegion(imgPassFireWork, fireIndex2*341, 0, 341, 354, 0, mapx2+Abs_Coords_X, mapy2+Abs_Coords_Y, TopLeft);
 						}
 						if(isFire3){
 							if(fireFlag3<=2){
@@ -684,7 +684,7 @@ public class DrawGame implements Common{
 									mapy3 = coordinate[1][RandomValue.getRandInt(0, 4)];
 								}
 							}
-							g.drawRegion(imgPassFireWork, fireIndex3*341, 0, 341, 354, 0, mapx3, mapy3, TopLeft);
+							g.drawRegion(imgPassFireWork, fireIndex3*341, 0, 341, 354, 0, mapx3+Abs_Coords_X, mapy3+Abs_Coords_Y, TopLeft);
 						}
 						if(isFire4){
 							if(fireFlag4<=2){
@@ -698,17 +698,17 @@ public class DrawGame implements Common{
 									mapy4 = coordinate[1][RandomValue.getRandInt(0, 4)];
 								}
 							}
-							g.drawRegion(imgPassFireWork, fireIndex4*341, 0, 341, 354, 0, mapx4, mapy4, TopLeft);
+							g.drawRegion(imgPassFireWork, fireIndex4*341, 0, 341, 354, 0, mapx4+Abs_Coords_X, mapy4+Abs_Coords_Y, TopLeft);
 						}
-						g.drawRegion(imgPassFireWork, fireIndex*341, 0, 341, 354, 0, mapx1, mapy1, TopLeft);
+						g.drawRegion(imgPassFireWork, fireIndex*341, 0, 341, 354, 0, mapx1+Abs_Coords_X, mapy1+Abs_Coords_Y, TopLeft);
 					}else{
 						isFireOver = true; //烟花结束
 						if(difficultLevel==2){ //没有下一个难度则提示重新开始游戏
-							g.drawRegion(imgPassSelect, index*193, 0, 193, 46, 0, 91, 420, TopLeft);
+							g.drawRegion(imgPassSelect, index*193, 0, 193, 46, 0, 91+Abs_Coords_X, 420+Abs_Coords_Y, TopLeft);
 						}else{
-							g.drawRegion(imgPassSelect, index*193, 46, 193, 46, 0, 91, 420, TopLeft);
+							g.drawRegion(imgPassSelect, index*193, 46, 193, 46, 0, 91+Abs_Coords_X, 420+Abs_Coords_Y, TopLeft);
 						}
-						g.drawRegion(imgPassSelect, (index==0?1:0)*193, 92, 193, 46, 0, 350, 420, TopLeft);
+						g.drawRegion(imgPassSelect, (index==0?1:0)*193, 92, 193, 46, 0, 350+Abs_Coords_X, 420+Abs_Coords_Y, TopLeft);
 					}
 				}
 			}
@@ -720,26 +720,26 @@ public class DrawGame implements Common{
 		Font largeFont = Font.getFont(Font.FACE_MONOSPACE, Font.STYLE_PLAIN, Font.SIZE_LARGE);
 		engine.setFont(19);
 		int x = screenW/2-largeFont.stringWidth(str)/2;
-		g.drawString(str, x, 482, TopLeft);
+		g.drawString(str, x+Abs_Coords_X, 482+Abs_Coords_Y, TopLeft);
 		
 		g.setColor(28, 213, 233);
-		g.drawString(String.valueOf(level), 300, 208, TopLeft);
-		g.drawString(String.valueOf(own.scores), 300, 238, TopLeft);
-		g.drawString(String.valueOf(own.eatCount), 300, 268, TopLeft);
-		g.drawString(String.valueOf(own.harm), 300, 298, TopLeft);
+		g.drawString(String.valueOf(level), 300+Abs_Coords_X, 208+Abs_Coords_Y, TopLeft);
+		g.drawString(String.valueOf(own.scores), 300+Abs_Coords_X, 238+Abs_Coords_Y, TopLeft);
+		g.drawString(String.valueOf(own.eatCount), 300+Abs_Coords_X, 268+Abs_Coords_Y, TopLeft);
+		g.drawString(String.valueOf(own.harm), 300+Abs_Coords_X, 298+Abs_Coords_Y, TopLeft);
 		String str2 = String.valueOf(((Weapon.hitNumber/Weapon.bombAmount)*100));
 		//System.out.println("str2:"+str2);
 		if(str2.equalsIgnoreCase("nan")){
 			str2="0";
 		}
 		if(str2.length()>2){
-			g.drawSubstring(str2, 0, 2, 300, 328, TopLeft);
+			g.drawSubstring(str2, 0, 2, 300+Abs_Coords_X, 328+Abs_Coords_Y, TopLeft);
 		}else{
-			g.drawSubstring(str2, 0, str2.length(), 300, 328, TopLeft);
+			g.drawSubstring(str2, 0, str2.length(), 300+Abs_Coords_X, 328+Abs_Coords_Y, TopLeft);
 		}
-		g.drawString("%", 320, 328, TopLeft);
+		g.drawString("%", 320+Abs_Coords_X, 328+Abs_Coords_Y, TopLeft);
 		//画勋章
-		drawMedal(g, 295, 358);
+		drawMedal(g, 295+Abs_Coords_X, 358+Abs_Coords_Y);
 		engine.setDefaultFont();
 	}
 	/*勋章*/
@@ -779,16 +779,16 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		g.drawImage(imgMain3, 0, 0, TopLeft);
-		g.drawImage(imgCallBoard, 105, 0, TopLeft);
-		g.drawImage(imgPrompt2, 120, 138, TopLeft);
+		g.drawImage(imgMain3, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
+		g.drawImage(imgCallBoard, 105+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
+		g.drawImage(imgPrompt2, 120+Abs_Coords_X, 138+Abs_Coords_Y, TopLeft);
 		g.setColor(28, 213, 233);
 		engine.setFont(19);
 		String info = "";
 		for(int i=0;i<gameIntro.length;i++){
 			info += gameIntro[i];
 		}
-		TextView.showMultiLineText(g, info, 15, 134, 155, 380, 240);
+		TextView.showMultiLineText(g, info, 15, 134+Abs_Coords_X, 155+Abs_Coords_Y, 380, 240);
 		engine.setDefaultFont();
 	}
 	
@@ -802,30 +802,30 @@ public class DrawGame implements Common{
 			}
 		}
 		engine.setFont(19);
-		g.drawImage(imgShop, 0, 0, TopLeft);
+		g.drawImage(imgShop, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		if(shopX<2){
 			//g.drawImage(imgShopSelect, 143+shopX*220, 127+shopY*100, TopLeft);
-			DrawUtil.drawRect(g, 145+shopX*220, 127+shopY*100, 78, 32, 2, 0XFFFF00);
+			DrawUtil.drawRect(g, 145+shopX*220+Abs_Coords_X, 127+shopY*100+Abs_Coords_Y, 78, 32, 2, 0XFFFF00);
 			
 			//显示描述信息
 			g.setColor(28, 213, 233);
-			TextView.showMultiLineText(g, desc[shopY][shopX], 5, 478, 90, 143, 180);
+			TextView.showMultiLineText(g, desc[shopY][shopX], 5, 478+Abs_Coords_X, 90+Abs_Coords_Y, 143, 180);
 		}else{
 			//g.drawImage(imgShopSelect2, 472, 343, TopLeft);
-			DrawUtil.drawRect(g, 472, 344, 145, 45, 2, 0XFFFF00);
+			DrawUtil.drawRect(g, 472+Abs_Coords_X, 344+Abs_Coords_Y, 145, 45, 2, 0XFFFF00);
 		}
 		g.setColor(28, 213, 233);
-		g.drawString(String.valueOf(engine.getEngineService().getBalance()), 540, 293, TopLeft);
+		g.drawString(String.valueOf(engine.getEngineService().getBalance()), 540+Abs_Coords_X, 293+Abs_Coords_Y, TopLeft);
 		
 		/*道具价格*/
-		drawShopNum(g,20,180,99);
-		drawShopNum(g,30,180,199);
-		drawShopNum(g,40,180,299);
-		drawShopNum(g,50,180,399);
-		drawShopNum(g,30,402,99);
-		drawShopNum(g,30,402,199);
-		drawShopNum(g,40,402,299);
-		drawShopNum(g,60,402,399);
+		drawShopNum(g,20,180+Abs_Coords_X,99+Abs_Coords_Y);
+		drawShopNum(g,30,180+Abs_Coords_X,199+Abs_Coords_Y);
+		drawShopNum(g,40,180+Abs_Coords_X,299+Abs_Coords_Y);
+		drawShopNum(g,50,180+Abs_Coords_X,399+Abs_Coords_Y);
+		drawShopNum(g,30,402+Abs_Coords_X,99+Abs_Coords_Y);
+		drawShopNum(g,30,402+Abs_Coords_X,199+Abs_Coords_Y);
+		drawShopNum(g,40,402+Abs_Coords_X,299+Abs_Coords_Y);
+		drawShopNum(g,60,402+Abs_Coords_X,399+Abs_Coords_Y);
 		
 		/*道具数量*/
 		g.setColor(255, 255, 255);
@@ -838,14 +838,14 @@ public class DrawGame implements Common{
 		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 72, 410, 25, 25, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 293, 410, 25, 25, 1);*/
 		
-		TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 68, 110, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 291, 110, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 68, 210, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.airDropPropNum), 291, 210, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.dartlePropNum), 68, 310, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.laserPropNum), 291, 310, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 68, 410, 29, 25, 1);
-		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 291, 410, 25, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 68+Abs_Coords_X, 110+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 291+Abs_Coords_X, 110+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 68+Abs_Coords_X, 210+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.airDropPropNum), 291+Abs_Coords_X, 210+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.dartlePropNum), 68+Abs_Coords_X, 310+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.laserPropNum), 291+Abs_Coords_X, 310+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 68+Abs_Coords_X, 410+Abs_Coords_Y, 29, 25, 1);
+		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 291+Abs_Coords_X, 410+Abs_Coords_Y, 25, 25, 1);
 		engine.setDefaultFont();
 	}
 	/*商城中的数字*/
@@ -875,15 +875,15 @@ public class DrawGame implements Common{
 			}
 		}
 		if(isEnoughMoney){
-			g.drawImage(imgPurchaseSuccess, 250, 228, TopLeft);
+			g.drawImage(imgPurchaseSuccess, 250+Abs_Coords_X, 228+Abs_Coords_Y, TopLeft);
 		}else{
-			g.drawImage(imgPurchaseFail, 172, 201, TopLeft);
+			g.drawImage(imgPurchaseFail, 172+Abs_Coords_X, 201+Abs_Coords_Y, TopLeft);
 			//g.drawImage(imgPurchaseSelect2, 185+(purchaseIndex*224), 254, TopLeft);
-			DrawUtil.drawRect(g, 185+(purchaseIndex*224), 254, 51, 30, 2, 0XFFFF00);
+			DrawUtil.drawRect(g, 185+(purchaseIndex*224)+Abs_Coords_X, 254+Abs_Coords_Y, 51, 30, 2, 0XFFFF00);
 		}
 	}
 	
-	/*充值界面*/
+	/*充值界面
 	public void drawRecharge(Graphics g, int index){
 		if(imgRecharge==null){
 			try {
@@ -897,7 +897,7 @@ public class DrawGame implements Common{
 		DrawUtil.drawRect(g, 50+index*136, 210, 77, 34, 2, 0XFFFF00);
 	}
 	
-	/*充值状态界面*/
+	充值状态界面
 	public void drawRechargeSuccess(Graphics g, boolean isSuccess){
 		if(imgRechargeSuccess==null || imgRechargeFail==null){
 			try {
@@ -914,6 +914,7 @@ public class DrawGame implements Common{
 		}
 		
 	}
+	*/
 	
 	/*游戏排行*/
 	public void drawRankList(Graphics g, GameRanking[] gameRanking){

@@ -138,10 +138,10 @@ public class CreateRole implements Common {
 	public void showOwn(Graphics g, Role own){
 		if(own.status==0){
 			g.drawRegion(imgOwn, ownPara[0][0]*(own.id-100), 0, ownPara[0][0], ownPara[0][1], 
-					own.direction == 0 ? Sprite.TRANS_MIRROR : 0, own.mapx, own.mapy, TopLeft);
+					own.direction == 0 ? Sprite.TRANS_MIRROR : 0, own.mapx+Abs_Coords_X, own.mapy+Abs_Coords_Y, TopLeft);
 		} else if(own.status==2){
 			g.drawRegion(imgOwn2, ownPara[0][0]*(own.id-100), 0, ownPara[0][0], ownPara[0][1], 
-					own.direction == 0 ? Sprite.TRANS_MIRROR : 0, own.mapx, own.mapy, TopLeft);
+					own.direction == 0 ? Sprite.TRANS_MIRROR : 0, own.mapx+Abs_Coords_X, own.mapy+Abs_Coords_Y, TopLeft);
 		}
 		
 	}
@@ -214,15 +214,15 @@ public class CreateRole implements Common {
 			}
 			tempy = npc.mapy;
 			/*黄色潜艇*/
-			g.setClip(0, 0, gameMapX, gameMapY);
+			g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 			if(npc.id==1){
 				g.drawRegion(imgYellow, 0, 0, 85, 28, npc.direction == 0 ? 0 : Sprite.TRANS_MIRROR, tempx, tempy, TopLeft);
-				if((tempx + npcPara[npc.id-1][0] < 0) && npc.direction == 0){
+				if((tempx + npcPara[npc.id-1][0] < 0+Abs_Coords_X) && npc.direction == 0){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
 				}
-				if((npc.direction==1) && (tempx > gameMapX)){
+				if((npc.direction==1) && (tempx > gameMapX+Abs_Coords_X)){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
@@ -233,12 +233,12 @@ public class CreateRole implements Common {
 			if(npc.id==2){
 				g.drawRegion(imgRed, 0, 0, npcPara[npc.id-1][0], npcPara[npc.id-1][1], 
 						npc.direction == 0 ? 0 : Sprite.TRANS_MIRROR, tempx, tempy, TopLeft);
-				if((tempx + npcPara[npc.id-1][0] < 0) && npc.direction == 0){
+				if((tempx + npcPara[npc.id-1][0] < 0+Abs_Coords_X) && npc.direction == 0){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
 				}
-				if((npc.direction==1) && (tempx > gameMapX)){
+				if((npc.direction==1) && (tempx > gameMapX+Abs_Coords_X)){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
@@ -255,12 +255,12 @@ public class CreateRole implements Common {
 			if(npc.id==3){
 				g.drawRegion(imgBlue, 0, 0, npcPara[npc.id-1][0], npcPara[npc.id-1][1], 
 						npc.direction == 0 ? 0 : Sprite.TRANS_MIRROR, tempx, tempy, TopLeft);
-				if((tempx + npcPara[npc.id-1][0] < 0) && npc.direction == 0){
+				if((tempx + npcPara[npc.id-1][0] < 0+Abs_Coords_X) && npc.direction == 0){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
 				}
-				if((npc.direction==1) && (tempx > gameMapX)){
+				if((npc.direction==1) && (tempx > gameMapX+Abs_Coords_X)){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
@@ -283,12 +283,12 @@ public class CreateRole implements Common {
 			if(npc.id==4){
 				g.drawRegion(imgBlack, 0, 0, npcPara[npc.id-1][0], npcPara[npc.id-1][1], 
 						npc.direction == 0 ? 0 : Sprite.TRANS_MIRROR, tempx, tempy, TopLeft);
-				if((tempx + npcPara[npc.id-1][0] < 0) && npc.direction == 0){
+				if((tempx + npcPara[npc.id-1][0] < 0+Abs_Coords_X) && npc.direction == 0){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
 				}
-				if((npc.direction==1) && (tempx > gameMapX)){
+				if((npc.direction==1) && (tempx > gameMapX+Abs_Coords_X)){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
@@ -311,12 +311,12 @@ public class CreateRole implements Common {
 			if(npc.id==5){
 				g.drawRegion(imgJisu, 0, 0, npcPara[npc.id-1][0], npcPara[npc.id-1][1], 
 						npc.direction == 0 ? 0 : Sprite.TRANS_MIRROR, tempx, tempy, TopLeft);
-				if((tempx + npcPara[npc.id-1][0] < 0) && npc.direction == 0){
+				if((tempx + npcPara[npc.id-1][0] < 0+Abs_Coords_X) && npc.direction == 0){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
 				}
-				if((npc.direction==1) && (tempx > gameMapX)){
+				if((npc.direction==1) && (tempx > gameMapX+Abs_Coords_X)){
 					npcs.removeElement(npc);
 					amount--;
 					count--;
@@ -328,15 +328,15 @@ public class CreateRole implements Common {
 					}
 				}
 			}
-			g.setClip(0, 0, screenW, screenH);
+			g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 		
 			/*雷达区域中的npc*/
 			Role role = npc.role; 
 			temp1 = parseFloat(npc.mapx+150)/5;
-			role.mapx = (int) temp1;
+			role.mapx = (int) temp1+Abs_Coords_X;
 			role.direction = npc.direction;
 			int color = returnColor(npc.id);
-			if((role.mapx+495)<634 && (role.mapx+495)>495){
+			if((role.mapx+495)<634+Abs_Coords_X && (role.mapx+495)>495+Abs_Coords_X){
 				g.setColor(color);
 				if(role.direction==0){
 					g.fillRect(role.mapx+480, yaxis(npc.mapy)+48, 5, 5);
@@ -416,21 +416,21 @@ public class CreateRole implements Common {
 		bossTempx = boss.mapx;
 		bossTempy = boss.mapy;
 		if(bossTempx+boss.width<= 0){
-			g.setClip(0, 0, screenW, gameMapY);
+			g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, gameMapY);
 			bossTempx += 2;//boss.speed;
 			boss.mapx = bossTempx;
 		} else {
-			g.setClip(0, 0, screenW, screenH);
+			g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 			if(boss.direction == 0){
 				bossTempx -= boss.speed;
 				boss.mapx = bossTempx;
-				if(boss.mapx <= 0){
+				if(boss.mapx <= 0+Abs_Coords_X){
 					boss.direction = 1;
 				}
 			} else{
 				bossTempx += boss.speed;
 				boss.mapx = bossTempx;
-				if((boss.mapx + boss.width) >= gameMapX){
+				if((boss.mapx + boss.width) >= gameMapX+Abs_Coords_X){
 					boss.direction = 0;
 				}
 			}

@@ -84,6 +84,8 @@ public class Weapon implements Common {
 	 * @param height 发射子弹者的高 (用于定位子弹的坐标)
 	 */
 	public void createBomb(Role own, int objectId, int mapx, int mapy, int direction, int width, int height){
+		mapx += Abs_Coords_X;
+		mapy += Abs_Coords_Y;
 		Weapon bomb = new Weapon();
 		if(own!=null){
 			bomb.terminalX = own.mapx + own.width/2;
@@ -108,7 +110,7 @@ public class Weapon implements Common {
 	
 	/*画普通攻击*/
 	public void showBomb(Graphics g, Role own){
-		g.setClip(0, 0, gameMapX, gameMapY);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 		Weapon bomb = null;
 		for(int i=bombs.size()-1;i>=0;i--){
 			bomb = (Weapon)bombs.elementAt(i);
@@ -140,7 +142,7 @@ public class Weapon implements Common {
 				}
 			}
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 	}
 	
 	/*敌方潜艇普通攻击*/
@@ -185,9 +187,9 @@ public class Weapon implements Common {
 					bombIndex=(bombIndex+1)%3;
 					bombFlag=0;
 				}
-				g.setClip(0, 0, screenW, gameMapY);
+				g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, gameMapY);
 				g.drawRegion(imgBomb, bombIndex*16, 0, 16, 71, Sprite.TRANS_MIRROR_ROT180, tempx, tempy, TopLeft);
-				g.setClip(0, 0, screenW, screenH);
+				g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 				if(tempy<=own.mapy+own.height/2){
 					/*SubmarineGameEngine.bombFlag = true;
 					SubmarineGameEngine.bombX = bomb.mapx;
@@ -258,7 +260,7 @@ public class Weapon implements Common {
 	}
 	/*显示   呼叫空投--己方*/
 	public void showParaDrop(Graphics g){
-		g.setClip(0, 0, gameMapX, gameMapY);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 		Weapon w = null;
 		for(int i=0;i<paraDrops.size();i++){
 			w = (Weapon) paraDrops.elementAt(i);
@@ -285,7 +287,7 @@ public class Weapon implements Common {
 				paraDrops.removeElement(w);
 			}
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 	}
 	/*创建   连射--己方*/
 	public void createDartle(int objectId, int mapx, int mapy, int direction, int width, int height){
@@ -303,7 +305,7 @@ public class Weapon implements Common {
 	}
 	/*显示   连射--己方*/
 	public void showDartle(Graphics g, int id){
-		g.setClip(0, 0, gameMapX, gameMapY);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 		Weapon w = null;
 		for(int i=0;i<dartles.size();i++){
 			w = (Weapon) dartles.elementAt(i);
@@ -328,7 +330,7 @@ public class Weapon implements Common {
 				}
 			}
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 	}
 
 	/*能量防护--技能(己方)*/
@@ -390,7 +392,7 @@ public class Weapon implements Common {
 	}
 	/*显示BOSS呼叫空投技能*/
 	public void showBossSkill(Graphics g){
-		g.setClip(0, 0, gameMapX, gameMapY);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, gameMapX, gameMapY);
 		Weapon w = null;
 		for(int i=0;i<airDrops.size();i++){
 			w = (Weapon) airDrops.elementAt(i);
@@ -415,7 +417,7 @@ public class Weapon implements Common {
 				airDrops.removeElement(w);
 			}
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(0+Abs_Coords_X, 0+Abs_Coords_Y, screenW, screenH);
 	} 
 
 	/*BOSS技能--水雷*/

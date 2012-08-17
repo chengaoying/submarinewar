@@ -469,7 +469,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 			keyState.remove(KeyCode.NUM4);
 			if(!okPressed){
 				if(propety.airDropPropNum>0 || isDebugMode()){
-					int x = 25;//own.mapx-120;
+					int x = 25+Abs_Coords_X;//own.mapx-120;
 					int y = -30;//own.mapy+own.height/2;
 					for(int i=0;i<5;i++){
 						weapon.createParaDrop(own, x, y, 2);
