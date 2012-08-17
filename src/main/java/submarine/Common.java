@@ -44,4 +44,6 @@ public interface Common {
   public static byte TopLeft = Graphics.TOP | Graphics.LEFT;
   public static byte TopRight = Graphics.TOP | Graphics.RIGHT;
   
+  public static final short Abs_Coords_X = 35, Abs_Coords_Y = 20;
+  
 }

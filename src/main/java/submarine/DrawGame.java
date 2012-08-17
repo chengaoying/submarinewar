@@ -100,15 +100,15 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		g.setClip(0, 0, screenW, screenH);
+		g.setClip(Abs_Coords_X, Abs_Coords_Y, screenW, screenH);
 		g.setColor(0X000000);
-		g.fillRect(0, 0, screenW, screenH);
-		g.drawImage(imgMain1, 0, 0, TopLeft);
-		int menuAxis[][] = { { 200, 223 }, { 200, 270 }, { 200, 317 },
-				{ 200, 364 }, { 200, 411 },{ 200, 458 } };
+		g.fillRect(Abs_Coords_X, Abs_Coords_Y, screenW, screenH);
+		g.drawImage(imgMain1, Abs_Coords_X, Abs_Coords_Y, TopLeft);
+		int menuAxis[][] = { { 200, 223 }, { 200, 270  }, { 200, 317  },
+				{ 200, 364  }, { 200, 411  },{ 200, 458  } };
 		for (int i = 0; i < menuAxis.length; ++i) {
 			g.drawRegion(imgMain2, (index != i) ? 0 : menuW, i * menuH,
-					menuW, menuH, 0, menuAxis[i][0], menuAxis[i][1], 0);
+					menuW, menuH, 0, menuAxis[i][0]+Abs_Coords_X, menuAxis[i][1]+Abs_Coords_Y, 0);
 			
 		}
 		
@@ -240,16 +240,16 @@ public class DrawGame implements Common{
 				iceFlag2=0;
 			}
 			if(mapIndex<=160){
-				g.drawRegion(imgMapUp, mapIndex, 0, 480, 120, 0, 0, 0, TopLeft);
+				g.drawRegion(imgMapUp, mapIndex, 0, 480, 120, 0, Abs_Coords_X, Abs_Coords_Y, TopLeft);
 			}else{
-				g.drawRegion(imgMapUp, mapIndex, 0, 640-mapIndex, 120, 0, 0, 0, TopLeft);
-				g.drawRegion(imgMapUp, 0, 0, 480-(640-mapIndex), 120, 0, 640-mapIndex, 0, TopLeft);
+				g.drawRegion(imgMapUp, mapIndex, 0, 640-mapIndex, 120, 0, Abs_Coords_X, Abs_Coords_Y, TopLeft);
+				g.drawRegion(imgMapUp, 0, 0, 480-(640-mapIndex), 120, 0, 640-mapIndex+Abs_Coords_X, Abs_Coords_Y, TopLeft);
 			}
 			if(mapIndex2<=160){
-				g.drawRegion(imgMapCenter, mapIndex2, 0, 480, 430, 0, 0, 100, TopLeft);
+				g.drawRegion(imgMapCenter, mapIndex2, 0, 480, 430, 0, Abs_Coords_X, 100+Abs_Coords_Y, TopLeft);
 			}else{
-				g.drawRegion(imgMapCenter, mapIndex2, 0, 640-mapIndex2, 430, 0, 0, 100, TopLeft);
-				g.drawRegion(imgMapCenter, 0, 0, 480-(640-mapIndex2), 430, 0, 640-mapIndex2, 100, TopLeft);
+				g.drawRegion(imgMapCenter, mapIndex2, 0, 640-mapIndex2, 430, 0, Abs_Coords_X, 100+Abs_Coords_Y, TopLeft);
+				g.drawRegion(imgMapCenter, 0, 0, 480-(640-mapIndex2), 430, 0, 640-mapIndex2+Abs_Coords_X, 100+Abs_Coords_Y, TopLeft);
 			}
 			if((x1-iceIndex+221)<=0){
 				iceIndex=0;
@@ -266,15 +266,15 @@ public class DrawGame implements Common{
 				x2=479;
 			}
 			if(ran==0){
-				g.drawRegion(imgIceBerg, 0, 0, imgIceBerg.getWidth(), imgIceBerg.getHeight(), 0, x1-iceIndex, 74, TopLeft);
+				g.drawRegion(imgIceBerg, 0, 0, imgIceBerg.getWidth(), imgIceBerg.getHeight(), 0, x1-iceIndex+Abs_Coords_X, 74+Abs_Coords_Y, TopLeft);
 			}
 			if(ran2==0){
-				g.drawRegion(imgIceBerg2, 0, 0, imgIceBerg2.getWidth(), imgIceBerg2.getHeight(), 0, x3-iceIndex2, 70, TopLeft);
+				g.drawRegion(imgIceBerg2, 0, 0, imgIceBerg2.getWidth(), imgIceBerg2.getHeight(), 0, x3-iceIndex2+Abs_Coords_X, 70+Abs_Coords_Y, TopLeft);
 			}
-			g.drawRegion(imgBoat, 0, 0, imgBoat.getWidth(), imgBoat.getHeight(), 0, x2-boatIndex, 390, TopLeft);
+			g.drawRegion(imgBoat, 0, 0, imgBoat.getWidth(), imgBoat.getHeight(), 0, x2-boatIndex+Abs_Coords_X, 390+Abs_Coords_Y, TopLeft);
 			
-			g.drawImage(imgMapDown, 0, 485, TopLeft);
-			g.drawImage(imgMapRight, 481, 0, TopLeft);
+			g.drawImage(imgMapDown, 0+Abs_Coords_X, 485+Abs_Coords_Y, TopLeft);
+			g.drawImage(imgMapRight, 481+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 			
 			/*BOSS出现前的警告*/
 			if((SubmarineGameEngine.warnEndTime-SubmarineGameEngine.warnStartTime)<3/* && !SubmarineGameEngine.isBoss5War*/){
@@ -285,10 +285,10 @@ public class DrawGame implements Common{
 					warnFlag=0;
 				}
 				g.setColor(0);
-				g.fillRect(0, 125, 480, 60);
+				g.fillRect(0+Abs_Coords_X, 125+Abs_Coords_Y, 480, 60);
 				//g.drawRegion(imgWarning, imgWarning.getWidth()/3*warnIndex, 0, imgWarning.getWidth()/3, imgWarning.getHeight(), 0, 150, 130, TopLeft);
 				if(warnFlag==1){
-					g.drawImage(imgWarning, 200, 130, TopLeft);
+					g.drawImage(imgWarning, 200+Abs_Coords_X, 130+Abs_Coords_Y, TopLeft);
 				}
 			}
 			
@@ -308,18 +308,19 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		g.drawImage(imgMain1, 0, 0, TopLeft);
-		int menu[][] = { { 200, 223 }, { 200, 270 }, { 200, 317 }};
+		g.drawImage(imgMain1, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
+		int menu[][] = { { 200, 223 }, { 200, 270 }, 
+				{ 200, 317 }};
 		for (int i = 0; i < menu.length; ++i) {
 			g.drawRegion(imgDifficultLevel2, (index != i) ? 0 : W, i * H,
-					W, H, 0, menu[i][0], menu[i][1], 0);
+					W, H, 0, menu[i][0]+Abs_Coords_X, menu[i][1]+Abs_Coords_Y, 0);
 			
 		}
 		if(!SubmarineGameEngine.isOpenDifficult2){
-			g.drawImage(imgDifficultLock, 302, 278, TopLeft);
+			g.drawImage(imgDifficultLock, 302+Abs_Coords_X, 278+Abs_Coords_Y, TopLeft);
 		}
 		if(!SubmarineGameEngine.isOpenDifficult3){
-			g.drawImage(imgDifficultLock, 302, 326, TopLeft);
+			g.drawImage(imgDifficultLock, 302+Abs_Coords_X, 326+Abs_Coords_Y, TopLeft);
 		}
 	}
 	
@@ -341,62 +342,62 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		g.drawImage(imgMain3, 0, 0, TopLeft);
+		g.drawImage(imgMain3, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		
-		g.drawRegion(imgInfo, 0, 0, imgInfo.getWidth(), imgInfo.getHeight(), 0, 20, 90, TopLeft);
+		g.drawRegion(imgInfo, 0, 0, imgInfo.getWidth(), imgInfo.getHeight(), 0, 20+Abs_Coords_X, 90+Abs_Coords_Y, TopLeft);
 		
-		g.drawRegion(imgDirection, selectL*31, 0, 31, 56, 0, 260, 262, TopLeft);
-		g.drawRegion(imgSubmirine, index*284, 0, 284, 104,0, 296, 226, TopLeft);
-		g.drawRegion(imgSubmarineName, index*246, 0, 246, 77, 0, 320, 120, TopLeft);
-		g.drawRegion(imgDirection, selectR*31, 56, 31, 56, 0, 585, 262, TopLeft);
+		g.drawRegion(imgDirection, selectL*31, 0, 31, 56, 0, 260+Abs_Coords_X, 262+Abs_Coords_Y, TopLeft);
+		g.drawRegion(imgSubmirine, index*284, 0, 284, 104,0, 296+Abs_Coords_X, 226+Abs_Coords_Y, TopLeft);
+		g.drawRegion(imgSubmarineName, index*246, 0, 246, 77, 0, 320+Abs_Coords_X, 120+Abs_Coords_Y, TopLeft);
+		g.drawRegion(imgDirection, selectR*31, 56, 31, 56, 0, 585+Abs_Coords_X, 262+Abs_Coords_Y, TopLeft);
 		
 		if(down){
 			if(confirm==0){
-				DrawUtil.drawRect(g, 288, 379, 134, 53, 2, 0XFFFF00);
+				DrawUtil.drawRect(g, 288+Abs_Coords_X, 379+Abs_Coords_Y, 134, 53, 2, 0XFFFF00);
 			}else{
-				DrawUtil.drawRect(g, 457, 379, 134, 53, 2, 0XFFFF00);
+				DrawUtil.drawRect(g, 457+Abs_Coords_X, 379+Abs_Coords_Y, 134, 53, 2, 0XFFFF00);
 			}
 		}else{
 			if(index2==0){
-				DrawUtil.drawRect(g, 260, 263, 33, 53, 2, 0XFFFF00);
+				DrawUtil.drawRect(g, 260+Abs_Coords_X, 263+Abs_Coords_Y, 33, 53, 2, 0XFFFF00);
 			}else{
-				DrawUtil.drawRect(g, 583, 263, 33, 53, 2, 0XFFFF00);
+				DrawUtil.drawRect(g, 583+Abs_Coords_X, 263+Abs_Coords_Y, 33, 53, 2, 0XFFFF00);
 			}
 		}
 		g.drawRegion(imgConfirm, 0, imgConfirm.getHeight()/2, imgConfirm.getWidth(), imgConfirm.getHeight()/2, 
-						0, 459, 381, TopLeft);
+						0, 459+Abs_Coords_X, 381+Abs_Coords_Y, TopLeft);
 		
 		if((!isPurchase && id == 101) || (!isPurchase2 && id == 102)){
-			g.drawImage(imgLock, 350, 260, TopLeft);
-			g.drawImage(imgPurchaseIcon, 290, 381, TopLeft);
+			g.drawImage(imgLock, 350+Abs_Coords_X, 260+Abs_Coords_Y, TopLeft);
+			g.drawImage(imgPurchaseIcon, 290+Abs_Coords_X, 381+Abs_Coords_Y, TopLeft);
 			/*潜艇价格*/
 			if(index==1){
-				drawNum(g, 200, 465, 299);
+				drawNum(g, 200, 465+Abs_Coords_X, 299+Abs_Coords_Y);
 			}else if(index==2){
-				drawNum(g, 200, 465, 299);
+				drawNum(g, 200, 465+Abs_Coords_X, 299+Abs_Coords_Y);
 			}
 			
 		}else{
 			g.drawRegion(imgConfirm, 0, 0, imgConfirm.getWidth(), imgConfirm.getHeight()/2, 
-					0, 290, 381, TopLeft);
+					0, 290+Abs_Coords_X, 381+Abs_Coords_Y, TopLeft);
 		}
 	
 		/*舰艇信息*/
 		g.setColor(28, 213, 233);
 		engine.setFont(19);
-		g.drawString(str[id-100][0], 42, 123, TopLeft);
-		g.drawString(str[id-100][1], 140, 123, TopLeft);
-		g.drawString(str[id-100][2], 42, 153, TopLeft);
-		g.drawString(str[id-100][3], 140, 153, TopLeft);
-		g.drawString(str[id-100][4], 42, 183, TopLeft);
-		g.drawString(str[id-100][5], 140, 183, TopLeft);
-		g.drawString(str[id-100][6], 42, 213, TopLeft);
-		g.drawString(str[id-100][7], 140, 213, TopLeft);
+		g.drawString(str[id-100][0], 42+Abs_Coords_X, 123+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][1], 140+Abs_Coords_X, 123+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][2], 42+Abs_Coords_X, 153+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][3], 140+Abs_Coords_X, 153+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][4], 42+Abs_Coords_X, 183+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][5], 140+Abs_Coords_X, 183+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][6], 42+Abs_Coords_X, 213+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100][7], 140+Abs_Coords_X, 213+Abs_Coords_Y, TopLeft);
 		/*附加信息*/
-		g.drawString(str[id-100+3][0], 42, 287, TopLeft);
-		g.drawString(str[id-100+3][1], 42, 317, TopLeft);
-		g.drawString(str[id-100+3][2], 42, 347, TopLeft);
-		g.drawString(str[id-100+3][3], 42, 377, TopLeft);
+		g.drawString(str[id-100+3][0], 42+Abs_Coords_X, 287+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100+3][1], 42+Abs_Coords_X, 317+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100+3][2], 42+Abs_Coords_X, 347+Abs_Coords_Y, TopLeft);
+		g.drawString(str[id-100+3][3], 42+Abs_Coords_X, 377+Abs_Coords_Y, TopLeft);
 		engine.setDefaultFont();
 	}
 	
@@ -924,7 +925,7 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		g.drawImage(imgRanking, 0, 0, TopLeft);
+		g.drawImage(imgRanking, 0+Abs_Coords_X, 0+Abs_Coords_Y, TopLeft);
 		g.setColor(190, 255, 255);
 		engine.setFont(19);
 		String ownRank="榜上无名!";
