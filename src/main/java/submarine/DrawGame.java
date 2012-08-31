@@ -385,7 +385,6 @@ public class DrawGame implements Common{
 	
 		/*舰艇信息*/
 		g.setColor(28, 213, 233);
-<<<<<<< HEAD
 		engine.setFont(19);
 		g.drawString(str[id-100][0], 42+Abs_Coords_X, 123+Abs_Coords_Y, TopLeft);
 		g.drawString(str[id-100][1], 140+Abs_Coords_X, 123+Abs_Coords_Y, TopLeft);
@@ -395,7 +394,6 @@ public class DrawGame implements Common{
 		g.drawString(str[id-100][5], 140+Abs_Coords_X, 183+Abs_Coords_Y, TopLeft);
 		g.drawString(str[id-100][6], 42+Abs_Coords_X, 213+Abs_Coords_Y, TopLeft);
 		g.drawString(str[id-100][7], 140+Abs_Coords_X, 213+Abs_Coords_Y, TopLeft);
-=======
 		engine.setFont(fontSize);
 		g.drawString(str[id-100][0], 42, 123, TopLeft);
 		g.drawString(str[id-100][1], 140, 123, TopLeft);
@@ -405,7 +403,6 @@ public class DrawGame implements Common{
 		g.drawString(str[id-100][5], 140, 183, TopLeft);
 		g.drawString(str[id-100][6], 42, 213, TopLeft);
 		g.drawString(str[id-100][7], 140, 213, TopLeft);
->>>>>>> develop
 		/*附加信息*/
 		g.drawString(str[id-100+3][0], 42+Abs_Coords_X, 287+Abs_Coords_Y, TopLeft);
 		g.drawString(str[id-100+3][1], 42+Abs_Coords_X, 317+Abs_Coords_Y, TopLeft);
