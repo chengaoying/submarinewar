@@ -11,6 +11,7 @@ import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.game.StateRecharge;
 import cn.ohyeah.stb.res.UIResource;
+import cn.ohyeah.stb.ui.PopupConfirm;
 import cn.ohyeah.stb.ui.PopupText;
 import cn.ohyeah.stb.util.DateUtil;
 import cn.ohyeah.stb.util.RandomValue;
@@ -1094,7 +1095,14 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 				draw.clearShop();
 				processRecharge();
 			}else{
-				propety.purchaseProp(own, shopX, shopY, engineService); //购买道具
+
+				PopupConfirm pc = UIResource.getInstance().buildDefaultPopupConfirm();
+				pc.setText("确认要购买?");
+				int index = pc.popup();
+				if(index==0){
+					propety.purchaseProp(own, shopX, shopY, engineService); //购买道具
+				}
+			
 				//propety.queryOwnAllProps(engineService);
 				//status = GAME_STATUS_PURCHASING_STATE;
 				//convertStatus = 0;
