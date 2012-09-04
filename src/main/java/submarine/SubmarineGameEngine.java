@@ -942,7 +942,12 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 			if(down){
 				if(confirm==0){
 					if((submarineId==101 && !isPurchase) || (submarineId==102 && !isPurchase2)){
-						propety.purchaseProp(null, submarineId, 0, engineService);
+						PopupConfirm pc = UIResource.getInstance().buildDefaultPopupConfirm();
+						pc.setText("确认要购买?");
+						int index = pc.popup();
+						if(index==0){
+							propety.purchaseProp(null, submarineId, 0, engineService);
+						}
 					}else{
 						status=GAME_STATUS_SELECT_LEVEL; //进入关卡选择界面
 						levelStime = System.currentTimeMillis()/1000;
