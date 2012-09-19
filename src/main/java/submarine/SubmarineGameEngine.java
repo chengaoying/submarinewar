@@ -9,7 +9,6 @@ import cn.ohyeah.stb.game.Configurations;
 import cn.ohyeah.stb.game.GameCanvasEngine;
 import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
-import cn.ohyeah.stb.game.StateRecharge;
 import cn.ohyeah.stb.res.UIResource;
 import cn.ohyeah.stb.ui.PopupText;
 import cn.ohyeah.stb.util.DateUtil;
@@ -204,11 +203,6 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 		    showHelp(g);
 		    break;
 		}
-	}
-
-	private void processRecharge() {
-		StateRecharge recharge = new StateRecharge(this);
-		recharge.recharge();
 	}
 
 	private void showGameMenu(SGraphics g) { //游戏中的菜单
@@ -1091,8 +1085,11 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 			keyState.remove(KeyCode.OK);
 			if(shopX==2){ //进入充值
 				//status = GAME_STATUS_RECHARGE;
-				draw.clearShop();
-				processRecharge();
+				//draw.clearShop();
+				//processRecharge();
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("游戏内不支持充值，请到大厅充值!");
+				pt.popup();
 			}else{
 				propety.purchaseProp(own, shopX, shopY, engineService); //购买道具
 				//propety.queryOwnAllProps(engineService);
@@ -1101,45 +1098,6 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 			}
 		}
 	}
-	
-//	private void processPurchasePropState(){
-//		if (keyState.contains(KeyCode.NUM0)) {
-//			keyState.remove(KeyCode.NUM0);
-//			if(convertStatus==1){
-//				status=GAME_STATUS_SELECT_SUBMIRINE;
-//			}else{
-//				status=GAME_STATUS_SHOP;
-//			}
-//			draw.clearPurchaseState();
-//		}
-//		if (keyState.contains(KeyCode.LEFT)) {
-//			keyState.remove(KeyCode.LEFT);
-//			purchaseIndex = 0;
-//		}
-//		if (keyState.contains(KeyCode.RIGHT)) {
-//			keyState.remove(KeyCode.RIGHT);
-//			purchaseIndex = 1;
-//		}
-//		if (keyState.contains(KeyCode.OK)) {
-//			keyState.remove(KeyCode.OK);
-//			if(isEnoughMoney){ //购买成功之后返回商城界面
-//				status=GAME_STATUS_SHOP;
-//				draw.clearPurchaseState();
-//			}else{ //余额不足进入充值或返回商城界面
-//				if(purchaseIndex==0){
-//					status = GAME_STATUS_RECHARGE;
-//					draw.clearShop();
-//				}else{
-//					if(convertStatus==1){
-//						status=GAME_STATUS_SELECT_SUBMIRINE;
-//					}else{
-//						status=GAME_STATUS_SHOP;
-//					};
-//					draw.clearPurchaseState();
-//				}
-//			}
-//		}
-//	}
 	
 	private void processInit() {
 		isSupportFavor = Configurations.getInstance().isFavorWayTelcomgd();

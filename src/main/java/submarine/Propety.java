@@ -3,9 +3,7 @@ package submarine;
 import cn.ohyeah.itvgame.model.OwnProp;
 import cn.ohyeah.stb.game.EngineService;
 import cn.ohyeah.stb.game.ServiceWrapper;
-import cn.ohyeah.stb.game.StateRecharge;
 import cn.ohyeah.stb.res.UIResource;
-import cn.ohyeah.stb.ui.PopupConfirm;
 import cn.ohyeah.stb.ui.PopupText;
 
 public class Propety implements Common{
@@ -24,7 +22,7 @@ public class Propety implements Common{
 	public static int useMedigelPropNum;   //使用回血道具数量
 	
 	public static int[] propIds = {34,35,36,37,38,39,40,41};
-	public static int[] propPrice = {30,40,50,30,60,20,30,40};
+	public static int[] propPrice = {3,4,5,3,6,2,3,4};
 	
 	private SubmarineGameEngine engine;
 	
@@ -109,9 +107,10 @@ public class Propety implements Common{
 	//}
 	
 	private boolean buyProp(int propId, int propCount, int price, String propName) {
-		if (engine.getEngineService().getBalance() >= price) {
+		//if (engine.getEngineService().getBalance() >= price) {
 			ServiceWrapper sw = engine.getServiceWrapper();
-			sw.purchaseProp(propId, propCount, "购买"+propName);
+			//sw.purchaseProp(propId, propCount, "购买"+propName);
+			sw.expend(price, "购买"+propName);
 			PopupText pt = UIResource.getInstance().buildDefaultPopupText();
 			if (sw.isServiceSuccessful()) {
 				pt.setText("购买"+propName+"成功");
@@ -122,8 +121,8 @@ public class Propety implements Common{
 			}
 			pt.popup();
 			return sw.isServiceSuccessful();
-		}
-		else {
+		//}
+		/*else {
 			PopupConfirm pc = UIResource.getInstance().buildDefaultPopupConfirm();
 			pc.setText("游戏币不足,是否充值");
 			if (pc.popup() == 0) {
@@ -131,7 +130,7 @@ public class Propety implements Common{
 				recharge.recharge();
 			}
 			return false;
-		}
+		}*/
 	}
 	
 	/*购买道具*/

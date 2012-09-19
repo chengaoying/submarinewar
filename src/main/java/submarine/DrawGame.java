@@ -815,17 +815,17 @@ public class DrawGame implements Common{
 			DrawUtil.drawRect(g, 472, 344, 145, 45, 2, 0XFFFF00);
 		}
 		g.setColor(28, 213, 233);
-		g.drawString(String.valueOf(engine.getEngineService().getBalance()), 540, 293, TopLeft);
+		//g.drawString(String.valueOf(engine.getEngineService().getBalance()), 540, 293, TopLeft);
 		
 		/*道具价格*/
-		drawShopNum(g,20,180,99);
-		drawShopNum(g,30,180,199);
-		drawShopNum(g,40,180,299);
-		drawShopNum(g,50,180,399);
-		drawShopNum(g,30,402,99);
-		drawShopNum(g,30,402,199);
-		drawShopNum(g,40,402,299);
-		drawShopNum(g,60,402,399);
+		drawShopNum(g,2,180,99);
+		drawShopNum(g,3,180,199);
+		drawShopNum(g,4,180,299);
+		drawShopNum(g,5,180,399);
+		drawShopNum(g,3,402,99);
+		drawShopNum(g,3,402,199);
+		drawShopNum(g,4,402,299);
+		drawShopNum(g,6,402,399);
 		
 		/*道具数量*/
 		g.setColor(255, 255, 255);
