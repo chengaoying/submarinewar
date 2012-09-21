@@ -1101,7 +1101,6 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 	
 	private void processInit() {
 		isSupportFavor = Configurations.getInstance().isFavorWayTelcomgd();
-		System.out.println("isSupportFavor:"+isSupportFavor);
 		//isSupportFavor = true;
 		status = GAME_STATUS_MAIN_MENU;
 		mainIndex = 0;

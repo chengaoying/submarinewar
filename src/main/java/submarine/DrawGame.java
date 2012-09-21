@@ -372,9 +372,12 @@ public class DrawGame implements Common{
 			g.drawImage(imgPurchaseIcon, 290, 381, TopLeft);
 			/*潜艇价格*/
 			if(index==1){
-				drawNum(g, 200, 465, 299);
+				drawNum(g, 10, 460, 299);
+				g.drawString("金币", 486, 299, 20);
+				System.out.println("g.color:"+g.getColor());
 			}else if(index==2){
-				drawNum(g, 200, 465, 299);
+				drawNum(g, 10, 460, 299);
+				g.drawString("金币", 486, 299, 20);
 			}
 			
 		}else{
@@ -814,21 +817,28 @@ public class DrawGame implements Common{
 			//g.drawImage(imgShopSelect2, 472, 343, TopLeft);
 			DrawUtil.drawRect(g, 472, 344, 145, 45, 2, 0XFFFF00);
 		}
-		g.setColor(28, 213, 233);
+		//g.setColor(28, 213, 233);
 		//g.drawString(String.valueOf(engine.getEngineService().getBalance()), 540, 293, TopLeft);
-		
+		g.setColor(0XFFFF00);
 		/*道具价格*/
-		drawShopNum(g,2,180,99);
-		drawShopNum(g,3,180,199);
-		drawShopNum(g,4,180,299);
-		drawShopNum(g,5,180,399);
-		drawShopNum(g,3,402,99);
-		drawShopNum(g,3,402,199);
-		drawShopNum(g,4,402,299);
-		drawShopNum(g,6,402,399);
+		drawShopNum(g,2,175,99);
+		g.drawString("金币", 191, 99, 20);
+		drawShopNum(g,3,175,199);
+		g.drawString("金币", 191, 199, 20);
+		drawShopNum(g,4,175,299);
+		g.drawString("金币", 191, 299, 20);
+		drawShopNum(g,5,175,399);
+		g.drawString("金币", 191, 399, 20);
+		drawShopNum(g,3,397,99);
+		g.drawString("金币", 413, 99, 20);
+		drawShopNum(g,3,397,199);
+		g.drawString("金币", 413, 199, 20);
+		drawShopNum(g,4,397,299);
+		g.drawString("金币", 413, 299, 20);
+		drawShopNum(g,6,397,399);
+		g.drawString("金币", 413, 399, 20);
 		
 		/*道具数量*/
-		g.setColor(255, 255, 255);
 		/*TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 72, 110, 25, 29, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 293, 110, 25, 25, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 72, 210, 25, 25, 1);
@@ -837,7 +847,7 @@ public class DrawGame implements Common{
 		TextView.showSingleLineText(g, String.valueOf(propety.laserPropNum), 293, 310, 25, 25, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.medigelPropNum), 72, 410, 25, 25, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.limitBooldPropNum), 293, 410, 25, 25, 1);*/
-		
+		g.setColor(0xffffff);
 		TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 68, 110, 29, 25, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 291, 110, 29, 25, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 68, 210, 29, 25, 1);

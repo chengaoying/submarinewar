@@ -137,50 +137,99 @@ public class Propety implements Common{
 	public void purchaseProp(Role own, int shopX, int shopY,EngineService engineService){
 		if(shopX==0 && shopY==0){
 			int propId = 39;
-			if (buyProp(propId, 1, propPrice[5], "能量防护罩")) {
-				energyPropNum++;
+			if(energyPropNum<99){
+				if (buyProp(propId, 1, propPrice[5], "能量防护罩")) {
+					energyPropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==1 && shopY==0){
 			int propId = 40;
-			if (buyProp(propId, 1, propPrice[6], "隐身装甲")) {
-				hidePropNum++;
+			if(energyPropNum<99){
+				if (buyProp(propId, 1, propPrice[6], "隐身装甲")) {
+					hidePropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==0 && shopY==1){
 			int propId = 34;
-			if (buyProp(propId, 1, propPrice[0], "凝固导弹")) {
-				slowPropNum++;
+			System.out.println("energyPropNum"+energyPropNum);
+			if(energyPropNum<99){
+				if (buyProp(propId, 1, propPrice[0], "凝固导弹")) {
+					slowPropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==1 && shopY==1){
 			int propId = 37;
-			if (buyProp(propId, 1, propPrice[3], "呼叫空投")) {
-				airDropPropNum++;
+			if(energyPropNum<99){
+				if (buyProp(propId, 1, propPrice[3], "呼叫空投")) {
+					airDropPropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==0 && shopY==2){
 			int propId = 41;
-			if(buyProp(propId, 1, propPrice[7], "连射")) {
-				dartlePropNum++;
+			if(energyPropNum<99){
+				if(buyProp(propId, 1, propPrice[7], "连射")) {
+					dartlePropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==1 && shopY==2){
 			int propId = 35;
-			if (buyProp(propId, 1, propPrice[1], "穿透激光弹")) {
-				laserPropNum++;
+			if(energyPropNum<99){
+				if (buyProp(propId, 1, propPrice[1], "穿透激光弹")) {
+					laserPropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==0 && shopY==3){
 			int propId = 36;
-			if (buyProp(propId, 1, propPrice[2], "维修机器人")) {
-				medigelPropNum++;
+			if(energyPropNum<=9){
+				if (buyProp(propId, 1, propPrice[2], "维修机器人")) {
+					medigelPropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==1 && shopY==3){
 			int propId = 38;
-			if (buyProp(propId, 1, propPrice[4], "再生装甲")) {
-				limitBooldPropNum++;
+			if(energyPropNum<99){
+				if (buyProp(propId, 1, propPrice[4], "再生装甲")) {
+					limitBooldPropNum++;
+				}
+			}else{
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("道具数量不能超过99个");
+				pt.popup();
 			}
 		}
 		if(shopX==101){
