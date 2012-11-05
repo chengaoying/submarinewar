@@ -427,11 +427,11 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 				status=GAME_STATUS_MAIN_MENU;
 				ServiceWrapper sw = getServiceWrapper();
 				GameRecord gr = sw.readRecord(attainmentId);
-				if(((gr==null && own.scores>0) || (gr.getScores()<=own.scores) && own.scores>0)){
+				if(((gr==null && own.scores>0) || (gr!=null && gr.getScores()<=own.scores) && own.scores>0)){
 					gameRecord.saveGameRecord(own, boss, currLevel);
 				}
 				GameAttainment ga = sw.readAttainment(attainmentId);
-				if(((ga==null && own.scores>0) || (ga.getScores()<=own.scores) && own.scores>0)){
+				if(((ga==null && own.scores>0) || (ga!=null && ga.getScores()<=own.scores) && own.scores>0)){
 					gameRecord.saveGameAttainment(own, boss, currLevel);
 				}
 				clearGamePlaying();
@@ -608,7 +608,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 				}
 			}
 		}else if(keyState.contains(KeyCode.NUM0)){ //进入游戏中的菜单
-			keyState.remove(KeyCode.BACK);
+			keyState.remove(KeyCode.NUM0);
 			status=GAME_STATUS_PALYING_MENU;
 		}
 		
@@ -665,7 +665,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 					passState=-1;
 					ServiceWrapper sw = getServiceWrapper();
 					GameAttainment ga = sw.readAttainment(attainmentId);
-					if(((ga==null && own.scores>0) || (ga.getScores()<=own.scores) && own.scores>0)){
+					if(((ga==null && own.scores>0) || (ga!=null && ga.getScores()<=own.scores) && own.scores>0)){
 						gameRecord.saveGameAttainment(own, boss, currLevel);
 					}
 					clearGamePlaying();
@@ -713,7 +713,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 						status=GAME_STATUS_PASS;
 						ServiceWrapper sw = getServiceWrapper();
 						GameAttainment ga = sw.readAttainment(attainmentId);
-						if(((ga==null && own.scores>0) || (ga.getScores()<=own.scores) && own.scores>0)){
+						if(((ga==null && own.scores>0) || (ga!=null && ga.getScores()<=own.scores) && own.scores>0)){
 							gameRecord.saveGameAttainment(own, boss, currLevel);
 						}
 						Propety.useHidePropNum=0;
@@ -725,7 +725,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 					status=GAME_STATUS_PASS;
 					ServiceWrapper sw = getServiceWrapper();
 					GameAttainment ga = sw.readAttainment(attainmentId);
-					if(((ga==null && own.scores>0) || (ga.getScores()<=own.scores) && own.scores>0)){
+					if(((ga==null && own.scores>0) || (ga!=null && ga.getScores()<=own.scores) && own.scores>0)){
 						gameRecord.saveGameAttainment(own, boss, currLevel);
 					}
 					Propety.useHidePropNum=0;
@@ -815,11 +815,11 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 				}
 				ServiceWrapper sw = getServiceWrapper();
 				GameRecord gr = sw.readRecord(attainmentId);
-				if(((gr==null && own.scores>0) || (gr.getScores()<=own.scores) && own.scores>0)){
+				if(((gr==null && own.scores>0) || (gr!=null && gr.getScores()<=own.scores) && own.scores>0)){
 					gameRecord.saveGameRecord(own, boss, currLevel);
 				}
 				GameAttainment ga = sw.readAttainment(attainmentId);
-				if(((ga==null && own.scores>0) || (ga.getScores()<=own.scores) && own.scores>0)){
+				if(((ga==null && own.scores>0) || (ga!=null && ga.getScores()<=own.scores) && own.scores>0)){
 					gameRecord.saveGameAttainment(own, boss, currLevel);
 				}
 			}else if(passState==-1){
