@@ -394,7 +394,7 @@ public class DrawGame implements Common{
 	
 		/*舰艇信息*/
 		g.setColor(28, 213, 233);
-		engine.setFont(19);
+		engine.setFont(19,false);
 		g.drawString(str[id-100][0], 42, 123, TopLeft);
 		g.drawString(str[id-100][1], 140, 123, TopLeft);
 		g.drawString(str[id-100][2], 42, 153, TopLeft);
@@ -479,7 +479,7 @@ public class DrawGame implements Common{
 		if(currBoold==90){
 			g.drawRegion(imgBlood, 20, 0, 10, 16, 0, 137, 500, TopLeft);
 		}
-		engine.setFont(24);
+		engine.setFont(24,false);
 		g.setColor(255, 255, 255);
 		/*关卡*/
 		g.drawRegion(imgGk, 25*(level-1), 0, 25, 28, 0, 585, 13, TopLeft);
@@ -495,7 +495,7 @@ public class DrawGame implements Common{
 		
 		/*道具数量*/
 		g.setColor(255, 255, 255);
-		engine.setFont(15);
+		engine.setFont(15,false);
 		/*TextView.showSingleLineText(g, String.valueOf(propety.energyPropNum), 498, 260, 18, 16, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.hidePropNum), 565, 260, 18, 16, 1);
 		TextView.showSingleLineText(g, String.valueOf(propety.slowPropNum), 498, 326, 18, 16, 1);
@@ -519,7 +519,7 @@ public class DrawGame implements Common{
 		if(!msg.equals("") && msgTime2-msgTime<3){
 			int color = g.getColor();
 			g.setColor(0xffffff);
-			engine.setFont(19);
+			engine.setFont(19,false);
 			Font currFont = engine.getFont();//Font.getFont(Font.FACE_MONOSPACE, Font.STYLE_PLAIN, Font.SIZE_LARGE);
 			int x = 100+imgRules.getWidth()/2 - currFont.stringWidth(msg)/2;
 			g.drawImage(imgRules, 100, 195, TopLeft);
@@ -728,7 +728,7 @@ public class DrawGame implements Common{
 	private void info(SGraphics g, int level, Role own, String str){
 		g.setColor(255, 255, 255);
 		Font largeFont = Font.getFont(Font.FACE_MONOSPACE, Font.STYLE_PLAIN, Font.SIZE_LARGE);
-		engine.setFont(19);
+		engine.setFont(19,false);
 		int x = screenW/2-largeFont.stringWidth(str)/2;
 		g.drawString(str, x, 482, TopLeft);
 		
@@ -793,7 +793,7 @@ public class DrawGame implements Common{
 		g.drawImage(imgCallBoard, 105, 0, TopLeft);
 		g.drawImage(imgPrompt2, 120, 138, TopLeft);
 		g.setColor(28, 213, 233);
-		engine.setFont(19);
+		engine.setFont(19,false);
 		String info = "";
 		for(int i=0;i<gameIntro.length;i++){
 			info += gameIntro[i];
@@ -811,7 +811,7 @@ public class DrawGame implements Common{
 				e.printStackTrace();
 			}
 		}
-		engine.setFont(19);
+		engine.setFont(19,false);
 		g.drawImage(imgShop, 0, 0, TopLeft);
 		if(shopX<2){
 			//g.drawImage(imgShopSelect, 143+shopX*220, 127+shopY*100, TopLeft);
@@ -937,7 +937,7 @@ public class DrawGame implements Common{
 		}
 		g.drawImage(imgRanking, 0, 0, TopLeft);
 		g.setColor(190, 255, 255);
-		engine.setFont(19);
+		engine.setFont(19,false);
 		String ownRank="榜上无名!";
 		if(gameRanking!=null){
 			sortByMedalNum(gameRanking); //排序

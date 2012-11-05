@@ -378,6 +378,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 			}else if(d_index==2){
 				difficultLevel = 2;
 			}
+			submarineId = 100;
 			status = GAME_STATUS_SELECT_SUBMIRINE;
 			draw.clearDifficultLevel();
 		}
@@ -905,8 +906,7 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 	public int confirm; //控制确认和返回
 	public static int submarineId=100; //用户舰艇id
 	private void processSelectSubmirine() {
-		if(keyState.contains(KeyCode.NUM0) || keyState.contains(KeyCode.BACK)){
-			if(keyState.contains(KeyCode.NUM0)){
+			if(keyState.contains(KeyCode.NUM0) || keyState.contains(KeyCode.BACK)){
 				keyState.remove(KeyCode.BACK);
 				status=GAME_STATUS_DIFFICULTYLEVEL; //返回主菜单
 				draw.clearSelectSubmarine();
@@ -994,7 +994,6 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 				selectR=1;
 				submarineId=102;
 			}
-		}
     }
 	private void processSelectLevel() {
 		if(isNewGame){
