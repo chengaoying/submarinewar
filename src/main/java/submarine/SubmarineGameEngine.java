@@ -1181,7 +1181,6 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 	
 	private void processInit() {
 		isSupportFavor = Configurations.getInstance().isFavorWayTelcomgd();
-		System.out.println("isSupportFavor:"+isSupportFavor);
 		//isSupportFavor = true;
 		status = GAME_STATUS_MAIN_MENU;
 		mainIndex = 0;
@@ -1209,14 +1208,14 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 		} else if (keyState.contains(KeyCode.OK)) {
 			keyState.remove(KeyCode.OK);
 			processSubMenu();
-	    }/* else if (keyState.contains(KeyCode.RIGHT)) {
+	    } else if (keyState.contains(KeyCode.RIGHT)) {
 	    	keyState.remove(KeyCode.RIGHT);
 	    	favorIndex = 1;
 	    	
 	    } else if (keyState.contains(KeyCode.LEFT)) {
 	    	keyState.remove(KeyCode.LEFT);
 	    	favorIndex = 0;
-	    }*/
+	    }
 		if (keyState.contains(KeyCode.BACK)){ //返回键直接退出
 			keyState.contains(KeyCode.BACK);
 			updateProps(); //更新道具
