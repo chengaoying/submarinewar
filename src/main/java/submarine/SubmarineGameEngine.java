@@ -1097,8 +1097,11 @@ public class SubmarineGameEngine extends GameCanvasEngine implements Common{
 			keyState.remove(KeyCode.OK);
 			if(shopX==2){ //进入充值
 				//status = GAME_STATUS_RECHARGE;
-				draw.clearShop();
-				processRecharge();
+				/*draw.clearShop();
+				processRecharge();*/
+				PopupText pt = UIResource.getInstance().buildDefaultPopupText();
+				pt.setText("赞不支持充值，请到大厅充值!");
+				pt.popup();
 			}else{
 				PopupConfirm pc = UIResource.getInstance().buildDefaultPopupConfirm();
 				pc.setText("确定要购买吗?");
